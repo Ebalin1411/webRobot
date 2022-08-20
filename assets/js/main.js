@@ -10,12 +10,23 @@ function initalize(){
         //document.querySelector('.output').style.display='none';
         outputContainerElement.style.visibility="hidden";
         document.querySelector('.input').style.visibility="hidden";
- 
-    }
-         
-       
+     }
     
 }
+
+function onKeyPress(event){
+
+    console.log('Key pressed', event.key);
+
+    if (event.key === 'Enter'){
+        const inputElement = document.querySelector('.input input');
+        const userResponse = inputElement.value;
+        
+        console.log('User Entered', userResponse);
+        }
+
+}
+
 function onButtonClick(){
     const  outputContainerElement= document.querySelector('.output');
     if( outputContainerElement ==null)
@@ -29,11 +40,15 @@ function onButtonClick(){
         document.querySelector('.input').style.visibility="visible";        
     }
     //create an element for asking questions
+
     const paraElement =  document.createElement('p');
     paraElement.textContent="Do you like to have a hot or cold coffee";
     paraElement.style.color='grey'
     const parentElement =document.querySelector('.output');
     parentElement.appendChild(paraElement);
+    // get input from user
+    const inputElement= document.querySelector('.input input');
+    inputElement.addEventListener('keydown',onKeyPress)
 
     
     //alert('Hey I am ready to take to Orders');
